@@ -1,5 +1,9 @@
 <template>
   <div class="skill-detail">
+    <div class="title">
+      <p class="t1">{{ skill.title }}</p>
+      <p class="t2">{{ skill.descr }}</p>
+    </div>
     <ul>
       <li v-for="lk in skill.links" ><a v-bind:href="lk.href">{{ lk.name }}</a></li>
     </ul>
@@ -24,7 +28,22 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   .skill-detail {
-    padding: 10px 0 10px 0;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 500px;
+    height: 100vh;
+    border: 1px solid #ddd;
+    background-color: rgba(200, 200, 200, 0.9);
+  }
+
+  .skill-detail .title .t1 {
+    font-size: 18px;
+  }
+
+  .skill-detail .title .t2 {
+    font-size: 14px;
   }
 
   .skills_detail ul {

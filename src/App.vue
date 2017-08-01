@@ -1,6 +1,5 @@
 <template>
-  <div id="app">
-    <!--<img src="./assets/bg.jpg">-->
+  <div id="app" v-on:click="resetSkill">
     <div class="block" id="first-block">
       <div class="float-block">
         <h1>Welcome Visitor</h1>
@@ -8,13 +7,24 @@
       </div>
     </div>
     <div class="block" id="second-block">
+      <p class="title">选择角色</p>
+      <div class="roles">
+        <zoom-img-box v-for="r in roles" v-bind:box_data="r"></zoom-img-box>
+      </div>
+    </div>
+    <div class="block" id="third-block">
       <p class="title">选择需要学习的技能</p>
       <div class="skills">
-        <skill v-for="(s, index) in skills" v-bind:skill="s" v-on:click_skill="clickSkill(index)"></skill>
+        <skill v-for="(s, index) in skills" v-bind:key="index" v-bind:skill="s" v-on:click_skill="clickSkill(index)"></skill>
       </div>
       <div class="skills_detail">
-        <skill-detail v-for="(s, index) in skills" v-if="showSkill == index" v-bind:skill="s"></skill-detail>
+        <transition name="slide-fade">
+          <skill-detail v-for="(s, index) in skills" v-if="showSkill == index" v-bind:skill="s"></skill-detail>
+        </transition>
       </div>
+    </div>
+    <div class="block" id="forth-block">
+      <p class="title">和我一起冒险吧</p>
     </div>
   </div>
 </template>
@@ -22,14 +32,20 @@
 <script>
 import Skill from './components/Skill'
 import SkillDetail from './components/SkillDetail'
+import ZoomImgBox from './components/ZoomImgBox'
+import _ from 'lodash'
 
 export default {
   name: 'app',
   components: {
-    Skill, SkillDetail
+    Skill, SkillDetail, ZoomImgBox
   },
   data () {
       return {
+        roles: [
+          {title: 'ttasdft', descr: 'aaaasdfaasdfasdfasfdassdf', img: '/static/role1.jpg'},
+          {title: 'tfasdfasdfasdfastt', descr: 'aaasdfadfasdfassdfasfsdfa', img: '/static/role2.jpg'}
+        ],
         skills: [
           { title: 'Web', 'descr': 'HTML, CSS, Javascript', logo: '/static/html5.png', links: [
             { name: 'a1', href: 'aa.html'},
@@ -42,14 +58,15 @@ export default {
           { title: 'Python', 'descr': 'Python', logo: '/static/python.png', links: [
 
           ] },
-          { title: 'Postgresql', 'descr': 'Postgresql', logo: '/static/postgresql.png', links: [
-
-          ] },
-          { title: 'MySql', 'descr': 'MySql', logo: '/static/mysql.png', links: [
-
+          { title: 'Database', 'descr': 'MySQL, Postgresql', logo: '/static/mysql.png', links: [
+            { name: 'MySQL', href: 'aa.html'},
+            { name: 'PostgreSQL', href: 'https://www.postgresql.org/'},
           ] },
           { title: 'Linux', 'descr': 'Linux', logo: '/static/linux.png', links: [
 
+          ] },
+          { title: 'Design', 'descr': 'Graphic, PS', logo: '/static/design.png', links: [
+            { name: 'a3', href: 'aa.html'}
           ] },
         ],
         showSkill: -1
@@ -57,7 +74,13 @@ export default {
   },
   methods : {
       clickSkill: function (index, event) {
-        this.showSkill = index;
+        this.showSkill = index == this.showSkill ? -1 : index;
+      },
+      resetSkill: function () {
+        this.showSkill = -1;
+      },
+      shuffle: function () {
+        this.showSkill = this.showSkill == 0 ? -1 : 0;
       }
   }
 }
@@ -78,7 +101,7 @@ export default {
 
   .block {
     width: 100%;
-    height: 600px;
+    height: 650px;
     margin: 0 auto;
     text-align: center;
   }
@@ -109,19 +132,31 @@ export default {
 
   .block .title {
     font-size: 30px;
-  }
-
-  #second-block {
     padding-top: 80px;
+    padding-bottom: 50px;
   }
 
-  #second-block .skills {
+  #third-block {
+    background-image: url('./assets/bg2.jpg');
+    background-repeat: no-repeat;
+    color: white;
+  }
+
+  #third-block .skills {
     padding: 50px 100px;
-    text-align: left;
+    text-align: center;
   }
 
-  #second-block .skills_detail {
-    padding: 10px;
+  .slide-fade-enter-active {
+    transition: all 0.5s ease;
+  }
+  .slide-fade-leave-active {
+    transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .slide-fade-enter, .slide-fade-leave-to
+    /* .slide-fade-leave-active for below version 2.1.8 */ {
+    transform: translateX(50px);
+    opacity: 0;
   }
 
 </style>
