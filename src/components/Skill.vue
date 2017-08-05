@@ -39,7 +39,7 @@
     display: inline-block;
     position: relative;
     width: 30%;
-    min-width: 300px;
+    min-width: 330px;
     height: 100px;
     cursor: pointer;
     padding: 10px 10px 10px 10px;
@@ -71,7 +71,7 @@
       stroke-width: 8px;
     }
     100% {
-      stroke-dasharray: 900;
+      stroke-dasharray: 1000;
       stroke-dashoffset: 0;
       stroke-width: 2px;
     }

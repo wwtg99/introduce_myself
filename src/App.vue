@@ -3,7 +3,7 @@
     <div class="block" id="first-block">
       <div class="float-block">
         <h1>Welcome Visitor</h1>
-        <p>aa</p>
+        <p>欢迎来到火眼狻猊的世界！</p>
       </div>
     </div>
     <div class="block" id="second-block">
@@ -25,7 +25,27 @@
     </div>
     <div class="block" id="forth-block">
       <p class="title">和我一起冒险吧</p>
+      <div class="timeline">
+        <Timeline>
+          <Timeline-item v-for="t in timeline">
+            <p class="time">{{ t['time'] }}</p>
+            <p class="content">{{ t['content'] }}</p>
+          </Timeline-item>
+        </Timeline>
+      </div>
+      <div class="contact">
+        <p>Contact</p>
+        <div class="contact-block">
+          <img src="./assets/home.png">
+          <img src="./assets/city.png" class="">
+        </div>
+        <div class="contact-block">
+          <img src="./assets/email.png">
+          <img src="./assets/email_addr.png" class="email_addr">
+        </div>
+      </div>
     </div>
+    <Back-top></Back-top>
   </div>
 </template>
 
@@ -43,8 +63,8 @@ export default {
   data () {
       return {
         roles: [
-          {title: 'ttasdft', descr: 'aaaasdfaasdfasdfasfdassdf', img: '/static/role1.jpg'},
-          {title: 'tfasdfasdfasdfastt', descr: 'aaasdfadfasdfassdfasfsdfa', img: '/static/role2.jpg'}
+          {title: '暗影刺客', descr: '冷静的杀手，从隐秘处给予最后一击。', img: '/static/role1.jpg'},
+          {title: '热血战士', descr: '充满激情的热血战士，永远冲在第一线。', img: '/static/role2.jpg'}
         ],
         skills: [
           { title: 'Web', 'descr': 'HTML, CSS, Javascript', logo: '/static/html5.png', links: [
@@ -69,7 +89,14 @@ export default {
             { name: 'a3', href: 'aa.html'}
           ] },
         ],
-        showSkill: -1
+        showSkill: -1,
+        timeline: [
+          {"time": "2014 年 6 月", "content": "Storm 数据分析、模式识别"},
+          {"time": "2014 年 11 月", "content": "实验室信息管理系统（LIMS）、实验室自动化"},
+          {"time": "2016 年 2 月", "content": "Restful PHP 框架"},
+          {"time": "2016 年 6 月", "content": "订单管理系统、微服务"},
+          {"time": "2016 年 9 月", "content": "大健康网络爬虫"},
+        ]
       }
   },
   methods : {
@@ -101,7 +128,7 @@ export default {
 
   .block {
     width: 100%;
-    height: 650px;
+    height: 750px;
     margin: 0 auto;
     text-align: center;
   }
@@ -123,11 +150,17 @@ export default {
     background-color: rgba(100, 100, 100, 0.5);
     width: 35%;
     height: 300px;
+    color: #dddddd;
   }
 
   .float-block h1 {
     font-family: Consolas, Menlo, Monaco, monospace;
     font-size: 48px;
+  }
+
+  .float-block p {
+    font-size: 18px;
+    padding-top: 10px;
   }
 
   .block .title {
@@ -147,16 +180,43 @@ export default {
     text-align: center;
   }
 
-  .slide-fade-enter-active {
-    transition: all 0.5s ease;
-  }
-  .slide-fade-leave-active {
-    transition: all .5s cubic-bezier(1.0, 0.5, 0.8, 1.0);
-  }
-  .slide-fade-enter, .slide-fade-leave-to
-    /* .slide-fade-leave-active for below version 2.1.8 */ {
-    transform: translateX(50px);
-    opacity: 0;
+  #forth-block .timeline {
+    width: 600px;
+    padding-left: 200px;
+    text-align: left;
+    font-size: 16px;
+    float: left;
   }
 
+  #forth-block .timeline .time {
+    font-weight: bold;
+  }
+
+  #forth-block .timeline .content {
+    text-indent: 1em;
+  }
+
+  #forth-block .contact {
+    float: left;
+    text-align: left;
+  }
+
+  #forth-block .contact p {
+    font-size: 26px;
+    color: #999999;
+  }
+
+  #forth-block .contact .contact-block {
+    border-left: solid 5px #1E7AD7;
+    padding: 10px;
+  } 
+
+  .contact-block img {
+    height: 30px;
+    vertical-align: middle;
+  }
+
+  .contact-block img.email_addr {
+    height: 15px;
+  }
 </style>
