@@ -28,7 +28,8 @@
       <div class="timeline">
         <Timeline>
           <Timeline-item v-for="t in timeline">
-            <p class="time">{{ t['time'] }}</p>
+            <p class="time" v-if="t['url']"><a :href="t['url']" target="_blank">{{ t['title'] }}</a></p>
+            <p v-else class="time">{{ t['title'] }}</p>
             <p class="content">{{ t['content'] }}</p>
           </Timeline-item>
         </Timeline>
@@ -68,34 +69,47 @@ export default {
         ],
         skills: [
           { title: 'Web', 'descr': 'HTML, CSS, Javascript', logo: '/static/html5.png', links: [
-            { name: 'a1', href: 'aa.html'},
-            { name: 'a2', href: 'aa.html'},
-            { name: 'a3', href: 'aa.html'}
+            { name: 'W3School', href: 'http://www.w3school.com.cn/'},
+            { name: 'Bootstrap', href: 'http://www.bootcss.com/'},
+            { name: 'jQuery', href: 'http://www.jquery123.com/'},
+            { name: 'Vue', href: 'https://cn.vuejs.org/'},
+            { name: 'NodeJs', href: 'https://nodejs.org/'}
           ] },
           { title: 'PHP', 'descr': 'PHP', logo: '/static/php.png', links: [
-
+            { name: 'PHP Manual', href: 'http://php.net/manual/zh/index.php'},
+            { name: 'Composer', href: 'http://www.phpcomposer.com/'},
+            { name: 'Packagist', href: 'https://packagist.org/'},
+            { name: 'Laravel', href: 'https://laravel.com/'},
           ] },
           { title: 'Python', 'descr': 'Python', logo: '/static/python.png', links: [
-
+            { name: 'Python', href: 'https://www.python.org/'},
+            { name: 'Anaconda', href: 'https://www.anaconda.com/'},
+            { name: 'Celery', href: 'https://www.celeryproject.org/'},
+            { name: 'Matplotlib', href: 'http://matplotlib.org/gallery.html'},
           ] },
           { title: 'Database', 'descr': 'MySQL, Postgresql', logo: '/static/mysql.png', links: [
-            { name: 'MySQL', href: 'aa.html'},
+            { name: 'MySQL', href: 'https://www.mysql.com/'},
             { name: 'PostgreSQL', href: 'https://www.postgresql.org/'},
+            { name: 'MongoDB', href: 'https://www.mongodb.com/'},
+            { name: 'Redis', href: 'https://redis.io/'},
+            { name: 'Elasticsearch', href: 'https://www.elastic.co/products/elasticsearch'}
           ] },
           { title: 'Linux', 'descr': 'Linux', logo: '/static/linux.png', links: [
-
+            { name: 'CentOS中文', href: 'http://centoscn.com/'},
+            { name: 'Git', href: 'https://git-scm.com/'},
+            { name: 'Docker', href: 'https://docs.docker.com/'},
+            { name: 'Nginx', href: 'https://nginx.org/'}
           ] },
           { title: 'Design', 'descr': 'Graphic, PS', logo: '/static/design.png', links: [
-            { name: 'a3', href: 'aa.html'}
+            { name: 'Dribbble', href: 'https://dribbble.com/'},
+            { name: 'ColorHunt', href: 'http://colorhunt.co/'},
+            { name: 'Icon', href: 'http://www.iconarchive.com/'},
+            { name: 'Wallions', href: 'http://wallions.com/'},
           ] },
         ],
         showSkill: -1,
         timeline: [
-          {"time": "2014 年 6 月", "content": "Storm 数据分析、模式识别"},
-          {"time": "2014 年 11 月", "content": "实验室信息管理系统（LIMS）、实验室自动化"},
-          {"time": "2016 年 2 月", "content": "Restful PHP 框架"},
-          {"time": "2016 年 6 月", "content": "订单管理系统、微服务"},
-          {"time": "2016 年 9 月", "content": "大健康网络爬虫"},
+          {"title": "SNP Search", "content": "整合多个数据库来源搜索 SNP 相关的位置、基因、频率、表型等信息。", "url": "#"},
         ]
       }
   },
@@ -170,8 +184,10 @@ export default {
   }
 
   #third-block {
-    background-image: url('./assets/bg2.jpg');
-    background-repeat: no-repeat;
+    background: -webkit-linear-gradient(left top, #5BD6DD, #046DED); /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(bottom right, #5BD6DD, #046DED); /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(bottom right, #5BD6DD, #046DED); /* Firefox 3.6 - 15 */
+    background: linear-gradient(to bottom right, #5BD6DD, #046DED); /* 标准的语法 */
     color: white;
   }
 
@@ -184,16 +200,17 @@ export default {
     width: 600px;
     padding-left: 200px;
     text-align: left;
-    font-size: 16px;
     float: left;
   }
 
   #forth-block .timeline .time {
     font-weight: bold;
+    font-size: 18px;
   }
 
   #forth-block .timeline .content {
     text-indent: 1em;
+    font-size: 16px;
   }
 
   #forth-block .contact {
@@ -209,7 +226,7 @@ export default {
   #forth-block .contact .contact-block {
     border-left: solid 5px #1E7AD7;
     padding: 10px;
-  } 
+  }
 
   .contact-block img {
     height: 30px;
