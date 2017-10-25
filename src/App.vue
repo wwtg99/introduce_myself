@@ -126,7 +126,7 @@ export default {
         {
           "title": "SNP Search",
           "content": "整合多个数据库来源搜索 SNP 相关的位置、基因、频率、表型等信息。",
-          "url": "#",
+          "url": "http://52jing.wang/snp/",
           "github": "https://github.com/wwtg99/snp_search"
         },
       ]
