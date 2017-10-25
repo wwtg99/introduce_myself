@@ -3,7 +3,8 @@
     <div class="block" id="first-block">
       <div class="float-block">
         <h1>Welcome Visitor</h1>
-        <p>欢迎来到火眼狻猊的世界！</p>
+        <p>欢迎来到剑与魔法的世界！</p>
+        <p>接下来，我们将一起 <Icon type="fork"></Icon> <Icon type="pizza"></Icon> \(^o^)/</p>
       </div>
     </div>
     <div class="block" id="second-block">
@@ -28,9 +29,12 @@
       <div class="timeline">
         <Timeline>
           <Timeline-item v-for="t in timeline">
-            <p class="time" v-if="t['url']"><a :href="t['url']" target="_blank">{{ t['title'] }}</a></p>
-            <p v-else class="time">{{ t['title'] }}</p>
+            <p class="title">{{ t['title'] }}</p>
             <p class="content">{{ t['content'] }}</p>
+            <p class="btns">
+              <span v-if="t['url']"><Button shape="circle" size="large" icon="android-desktop" @click="openUrl(t['url'])">WEBSITE</Button></span>
+              <span v-if="t['github']"><Button shape="circle" size="large" icon="social-github" @click="openUrl(t['github'])">GITHUB</Button></span>
+            </p>
           </Timeline-item>
         </Timeline>
       </div>
@@ -38,11 +42,15 @@
         <p>Contact</p>
         <div class="contact-block">
           <img src="./assets/home.png">
-          <img src="./assets/city.png" class="">
+          <img src="./assets/city.png">
         </div>
         <div class="contact-block">
           <img src="./assets/email.png">
           <img src="./assets/email_addr.png" class="email_addr">
+        </div>
+        <div class="contact-block">
+          <Icon type="social-github" size="30" style="padding-left: 3px;"></Icon>&nbsp;
+          <a href="https://github.com/wwtg99" target="_blank">https://github.com/wwtg99</a>
         </div>
       </div>
     </div>
@@ -62,67 +70,81 @@ export default {
     Skill, SkillDetail, ZoomImgBox
   },
   data () {
-      return {
-        roles: [
-          {title: '暗影刺客', descr: '冷静的杀手，从隐秘处给予最后一击。', img: '/static/role1.jpg'},
-          {title: '热血战士', descr: '充满激情的热血战士，永远冲在第一线。', img: '/static/role2.jpg'}
-        ],
-        skills: [
-          { title: 'Web', 'descr': 'HTML, CSS, Javascript', logo: '/static/html5.png', links: [
-            { name: 'W3School', href: 'http://www.w3school.com.cn/'},
-            { name: 'Bootstrap', href: 'http://www.bootcss.com/'},
-            { name: 'jQuery', href: 'http://www.jquery123.com/'},
-            { name: 'Vue', href: 'https://cn.vuejs.org/'},
-            { name: 'NodeJs', href: 'https://nodejs.org/'}
-          ] },
-          { title: 'PHP', 'descr': 'PHP', logo: '/static/php.png', links: [
-            { name: 'PHP Manual', href: 'http://php.net/manual/zh/index.php'},
-            { name: 'Composer', href: 'http://www.phpcomposer.com/'},
-            { name: 'Packagist', href: 'https://packagist.org/'},
-            { name: 'Laravel', href: 'https://laravel.com/'},
-          ] },
-          { title: 'Python', 'descr': 'Python', logo: '/static/python.png', links: [
-            { name: 'Python', href: 'https://www.python.org/'},
-            { name: 'Anaconda', href: 'https://www.anaconda.com/'},
-            { name: 'Celery', href: 'https://www.celeryproject.org/'},
-            { name: 'Matplotlib', href: 'http://matplotlib.org/gallery.html'},
-          ] },
-          { title: 'Database', 'descr': 'MySQL, Postgresql', logo: '/static/mysql.png', links: [
-            { name: 'MySQL', href: 'https://www.mysql.com/'},
-            { name: 'PostgreSQL', href: 'https://www.postgresql.org/'},
-            { name: 'MongoDB', href: 'https://www.mongodb.com/'},
-            { name: 'Redis', href: 'https://redis.io/'},
-            { name: 'Elasticsearch', href: 'https://www.elastic.co/products/elasticsearch'}
-          ] },
-          { title: 'Linux', 'descr': 'Linux', logo: '/static/linux.png', links: [
-            { name: 'CentOS中文', href: 'http://centoscn.com/'},
-            { name: 'Git', href: 'https://git-scm.com/'},
-            { name: 'Docker', href: 'https://docs.docker.com/'},
-            { name: 'Nginx', href: 'https://nginx.org/'}
-          ] },
-          { title: 'Design', 'descr': 'Graphic, PS', logo: '/static/design.png', links: [
-            { name: 'Dribbble', href: 'https://dribbble.com/'},
-            { name: 'ColorHunt', href: 'http://colorhunt.co/'},
-            { name: 'Icon', href: 'http://www.iconarchive.com/'},
-            { name: 'Wallions', href: 'http://wallions.com/'},
-          ] },
-        ],
-        showSkill: -1,
-        timeline: [
-          {"title": "SNP Search", "content": "整合多个数据库来源搜索 SNP 相关的位置、基因、频率、表型等信息。", "url": "#"},
-        ]
-      }
+    return {
+      roles: [
+        {title: '暗影刺客', descr: '冷静的杀手，从隐秘处给予最后一击。', img: '/static/role1.jpg'},
+        {title: '热血战士', descr: '充满激情的热血战士，永远冲在第一线。', img: '/static/role2.jpg'}
+      ],
+      skills: [
+        { title: 'Web', 'descr': 'HTML, CSS, Javascript', logo: '/static/html5.png', links: [
+          { name: 'W3School', href: 'http://www.w3school.com.cn/'},
+          { name: 'Bootstrap', href: 'http://www.bootcss.com/'},
+          { name: 'jQuery', href: 'http://www.jquery123.com/'},
+          { name: 'Vue', href: 'https://cn.vuejs.org/'},
+          { name: 'NodeJs', href: 'https://nodejs.org/'}
+        ] },
+        { title: 'PHP', 'descr': 'PHP', logo: '/static/php.png', links: [
+          { name: 'PHP Manual', href: 'http://php.net/manual/zh/index.php'},
+          { name: 'Composer', href: 'http://www.phpcomposer.com/'},
+          { name: 'Packagist', href: 'https://packagist.org/'},
+          { name: 'Laravel', href: 'https://laravel.com/'},
+        ] },
+        { title: 'Python', 'descr': 'Python', logo: '/static/python.png', links: [
+          { name: 'Python', href: 'https://www.python.org/'},
+          { name: 'Anaconda', href: 'https://www.anaconda.com/'},
+          { name: 'Scrapy', href: 'https://scrapy.org/'},
+          { name: 'Celery', href: 'https://www.celeryproject.org/'},
+          { name: 'Matplotlib', href: 'http://matplotlib.org/gallery.html'},
+        ] },
+        { title: 'Database', 'descr': 'MySQL, Postgresql', logo: '/static/mysql.png', links: [
+          { name: 'MySQL', href: 'https://www.mysql.com/'},
+          { name: 'PostgreSQL', href: 'https://www.postgresql.org/'},
+          { name: 'MongoDB', href: 'https://www.mongodb.com/'},
+          { name: 'Redis', href: 'https://redis.io/'},
+          { name: 'Elasticsearch', href: 'https://www.elastic.co/products/elasticsearch'}
+        ] },
+        { title: 'Linux', 'descr': 'Linux', logo: '/static/linux.png', links: [
+          { name: 'CentOS中文', href: 'http://centoscn.com/'},
+          { name: 'Git', href: 'https://git-scm.com/'},
+          { name: 'Docker', href: 'https://docs.docker.com/'},
+          { name: 'Nginx', href: 'https://nginx.org/'}
+        ] },
+        { title: 'Design', 'descr': 'Graphic, PS', logo: '/static/design.png', links: [
+          { name: 'Dribbble', href: 'https://dribbble.com/'},
+          { name: 'ColorHunt', href: 'http://colorhunt.co/'},
+          { name: 'Icon', href: 'http://www.iconarchive.com/'},
+          { name: 'Wallions', href: 'http://wallions.com/'},
+        ] },
+      ],
+      showSkill: -1,
+      timeline: [
+        {
+          "title": "SNP Crawler",
+          "content": "基因数据爬虫，从多个知名网站中抓取基因数据，并保存到文件、MongoDB 或 Elasticsearch中。",
+          "github": "https://github.com/wwtg99/snp_crawler"
+        },
+        {
+          "title": "SNP Search",
+          "content": "整合多个数据库来源搜索 SNP 相关的位置、基因、频率、表型等信息。",
+          "url": "#",
+          "github": "https://github.com/wwtg99/snp_search"
+        },
+      ]
+    }
   },
   methods : {
-      clickSkill: function (index, event) {
-        this.showSkill = index == this.showSkill ? -1 : index;
-      },
-      resetSkill: function () {
-        this.showSkill = -1;
-      },
-      shuffle: function () {
-        this.showSkill = this.showSkill == 0 ? -1 : 0;
-      }
+    clickSkill(index, event) {
+      this.showSkill = index == this.showSkill ? -1 : index;
+    },
+    resetSkill() {
+      this.showSkill = -1;
+    },
+    shuffle() {
+      this.showSkill = this.showSkill == 0 ? -1 : 0;
+    },
+    openUrl(url) {
+        window.open(url);
+    }
   }
 }
 </script>
@@ -158,7 +180,7 @@ export default {
 
   .float-block {
     margin: 0 auto;
-    padding: 50px 10px;
+    padding: 50px 30px;
     position: relative;
     top: 100px;
     background-color: rgba(100, 100, 100, 0.5);
@@ -203,14 +225,16 @@ export default {
     float: left;
   }
 
-  #forth-block .timeline .time {
+  #forth-block .timeline .title {
     font-weight: bold;
     font-size: 18px;
+    padding: 0;
   }
 
   #forth-block .timeline .content {
     text-indent: 1em;
     font-size: 16px;
+    padding: 0 0 10px 0;
   }
 
   #forth-block .contact {
@@ -226,6 +250,7 @@ export default {
   #forth-block .contact .contact-block {
     border-left: solid 5px #1E7AD7;
     padding: 10px;
+    font-size: 14px;
   }
 
   .contact-block img {

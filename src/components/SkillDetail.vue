@@ -5,7 +5,7 @@
       <p class="t2">{{ skill.descr }}</p>
     </div>
     <ul>
-      <li v-for="lk in skill.links" ><a v-bind:href="lk.href">{{ lk.name }}</a></li>
+      <li v-for="lk in skill.links" ><a v-bind:href="lk.href" target="_blank">{{ lk.name }}</a></li>
     </ul>
   </div>
 </template>
