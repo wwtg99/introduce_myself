@@ -10,7 +10,7 @@
     <div class="block" id="second-block">
       <p class="title">选择角色</p>
       <div class="roles">
-        <zoom-img-box v-for="r in roles" v-bind:box_data="r"></zoom-img-box>
+        <zoom-img-box v-for="r in roles" v-bind:box_data="r" v-bind:style="roleStyle"></zoom-img-box>
       </div>
     </div>
     <div class="block" id="third-block">
@@ -19,9 +19,9 @@
         <skill v-for="(s, index) in skills" v-bind:key="index" v-bind:skill="s" v-on:click_skill="clickSkill(index)"></skill>
       </div>
       <div class="skills_detail">
-        <transition name="slide-fade">
-          <skill-detail v-for="(s, index) in skills" v-if="showSkill == index" v-bind:skill="s"></skill-detail>
-        </transition>
+        <transition-group name="slide-fade">
+          <skill-detail v-for="(s, index) in skills" v-show="showSkill == index" v-bind:skill="s" v-bind:key="index"></skill-detail>
+        </transition-group>
       </div>
     </div>
     <div class="block" id="forth-block">
@@ -71,6 +71,14 @@ export default {
   },
   data () {
     return {
+      roleStyle: {
+          position: 'relative',
+          transform: 'none',
+          '-ms-transform': 'none',
+          '-moz-transform': 'none',
+          '-webkit-transform': 'none',
+          '-o-transform': 'none'
+      },
       roles: [
         {title: '暗影刺客', descr: '冷静的杀手，从隐秘处给予最后一击。', img: '/static/role1.jpg'},
         {title: '热血战士', descr: '充满激情的热血战士，永远冲在第一线。', img: '/static/role2.jpg'}
@@ -144,7 +152,34 @@ export default {
     },
     openUrl(url) {
         window.open(url);
+    },
+    secondBlockScroll() {
+        let scrollTop=0;
+        if(document.documentElement&&document.documentElement.scrollTop)
+        {
+          scrollTop=document.documentElement.scrollTop;
+        }
+        else if(document.body) {
+          scrollTop = document.body.scrollTop;
+        }
+        let s = document.getElementById('second-block');
+        let top = s.offsetTop - scrollTop;
+        let trans = 'none';
+        if (top < 1) {
+            trans = 'none';
+        } else {
+            let scale = (750 - top) / 750;
+            trans = 'scale(' + scale + ',' + scale + ')';
+        }
+        this.roleStyle.transform = trans;
+        this.roleStyle['-ms-transform'] = trans;
+        this.roleStyle['-moz-transform'] = trans;
+        this.roleStyle['-webkit-transform'] = trans;
+        this.roleStyle['-o-transform'] = trans;
     }
+  },
+  mounted() {
+    window.addEventListener('scroll', this.secondBlockScroll);
   }
 }
 </script>
@@ -216,6 +251,14 @@ export default {
   #third-block .skills {
     padding: 50px 100px;
     text-align: center;
+  }
+
+  .slide-fade-enter-active .slide-fade-leave-active {
+    transition: all 1.5s
+  }
+
+  .slide-fade-enter, .slide-fade-leave-to {
+    opacity: 0
   }
 
   #forth-block .timeline {
