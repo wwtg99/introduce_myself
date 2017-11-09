@@ -137,6 +137,12 @@ export default {
           "url": "http://52jing.wang/snp/",
           "github": "https://github.com/wwtg99/snp_search"
         },
+        {
+          "title": "Image Filter",
+          "content": "图片处理与滤镜工具。",
+          "url": "http://image-filter.52jing.wang",
+          "github": "https://github.com/wwtg99/image_filter"
+        },
       ]
     }
   },
