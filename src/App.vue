@@ -134,13 +134,13 @@ export default {
         {
           "title": "SNP Search",
           "content": "整合多个数据库来源搜索 SNP 相关的位置、基因、频率、表型等信息。",
-          "url": "http://52jing.wang/snp/",
+          "url": "http://52jing.wang/snp",
           "github": "https://github.com/wwtg99/snp_search"
         },
         {
           "title": "Image Filter",
           "content": "图片处理与滤镜工具。",
-          "url": "http://image-filter.52jing.wang",
+          "url": "http://52jing.wang/image",
           "github": "https://github.com/wwtg99/image_filter"
         },
       ]
