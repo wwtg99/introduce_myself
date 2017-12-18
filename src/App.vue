@@ -143,6 +143,12 @@ export default {
           "url": "http://52jing.wang/image",
           "github": "https://github.com/wwtg99/image_filter"
         },
+        {
+          "title": "Height Predictor",
+          "content": "机器学习方法预测基因身高。",
+          "url": "http://52jing.wang/height_predictor",
+          "github": "https://github.com/wwtg99/predict_height"
+        },
       ]
     }
   },
