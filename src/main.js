@@ -3,15 +3,29 @@
 import Vue from 'vue'
 import iView from 'iview'
 import 'iview/dist/styles/iview.css'
+import VueRouter from 'vue-router'
 import App from './App'
+import Resume from './components/Resume.vue'
 
-Vue.config.productionTip = false;
+Vue.config.productionTip = false
 
-Vue.use(iView);
+Vue.use(VueRouter)
+Vue.use(iView)
+
+const router = new VueRouter({
+  routes: [
+    { path: '/', component: App },
+    { path: '/resume', component: Resume }
+  ]
+})
 
 /* eslint-disable no-new */
+// new Vue({
+//   el: '#app',
+//   template: '<App/>',
+//   components: { App }
+// })
+
 new Vue({
-  el: '#app',
-  template: '<App/>',
-  components: { App }
-})
+  router
+}).$mount('#app')

@@ -62,7 +62,6 @@
 import Skill from './components/Skill'
 import SkillDetail from './components/SkillDetail'
 import ZoomImgBox from './components/ZoomImgBox'
-import _ from 'lodash'
 
 export default {
   name: 'app',
@@ -72,126 +71,142 @@ export default {
   data () {
     return {
       roleStyle: {
-          position: 'relative',
-          transform: 'none',
-          '-ms-transform': 'none',
-          '-moz-transform': 'none',
-          '-webkit-transform': 'none',
-          '-o-transform': 'none'
+        position: 'relative',
+        transform: 'none',
+        '-ms-transform': 'none',
+        '-moz-transform': 'none',
+        '-webkit-transform': 'none',
+        '-o-transform': 'none'
       },
       roles: [
-        {title: '暗影刺客', descr: '冷静的杀手，从隐秘处给予最后一击。', img: '/static/role1.jpg'},
-        {title: '热血战士', descr: '充满激情的热血战士，永远冲在第一线。', img: '/static/role2.jpg'}
+        { title: '暗影刺客', descr: '冷静的杀手，从隐秘处给予最后一击。', img: '/static/role1.jpg' },
+        { title: '热血战士', descr: '充满激情的热血战士，永远冲在第一线。', img: '/static/role2.jpg' }
       ],
       skills: [
-        { title: 'Web', 'descr': 'HTML, CSS, Javascript', logo: '/static/html5.png', links: [
-          { name: 'W3School', href: 'http://www.w3school.com.cn/'},
-          { name: 'Bootstrap', href: 'http://www.bootcss.com/'},
-          { name: 'jQuery', href: 'http://www.jquery123.com/'},
-          { name: 'Vue', href: 'https://cn.vuejs.org/'},
-          { name: 'NodeJs', href: 'https://nodejs.org/'}
-        ] },
-        { title: 'PHP', 'descr': 'PHP', logo: '/static/php.png', links: [
-          { name: 'PHP Manual', href: 'http://php.net/manual/zh/index.php'},
-          { name: 'Composer', href: 'http://www.phpcomposer.com/'},
-          { name: 'Packagist', href: 'https://packagist.org/'},
-          { name: 'Laravel', href: 'https://laravel.com/'},
-        ] },
-        { title: 'Python', 'descr': 'Python', logo: '/static/python.png', links: [
-          { name: 'Python', href: 'https://www.python.org/'},
-          { name: 'Anaconda', href: 'https://www.anaconda.com/'},
-          { name: 'Scrapy', href: 'https://scrapy.org/'},
-          { name: 'Celery', href: 'https://www.celeryproject.org/'},
-          { name: 'Matplotlib', href: 'http://matplotlib.org/gallery.html'},
-        ] },
-        { title: 'Database', 'descr': 'MySQL, Postgresql', logo: '/static/mysql.png', links: [
-          { name: 'MySQL', href: 'https://www.mysql.com/'},
-          { name: 'PostgreSQL', href: 'https://www.postgresql.org/'},
-          { name: 'MongoDB', href: 'https://www.mongodb.com/'},
-          { name: 'Redis', href: 'https://redis.io/'},
-          { name: 'Elasticsearch', href: 'https://www.elastic.co/products/elasticsearch'}
-        ] },
-        { title: 'Linux', 'descr': 'Linux', logo: '/static/linux.png', links: [
-          { name: 'CentOS中文', href: 'http://centoscn.com/'},
-          { name: 'Git', href: 'https://git-scm.com/'},
-          { name: 'Docker', href: 'https://docs.docker.com/'},
-          { name: 'Nginx', href: 'https://nginx.org/'}
-        ] },
-        { title: 'Design', 'descr': 'Graphic, PS', logo: '/static/design.png', links: [
-          { name: 'Dribbble', href: 'https://dribbble.com/'},
-          { name: 'ColorHunt', href: 'http://colorhunt.co/'},
-          { name: 'Icon', href: 'http://www.iconarchive.com/'},
-          { name: 'Wallions', href: 'http://wallions.com/'},
-        ] },
+        { title: 'Web',
+          descr: 'HTML, CSS, Javascript',
+          logo: '/static/html5.png',
+          links: [
+            { name: 'W3School', href: 'http://www.w3school.com.cn/' },
+            { name: 'Bootstrap', href: 'http://www.bootcss.com/' },
+            { name: 'jQuery', href: 'http://www.jquery123.com/' },
+            { name: 'Vue', href: 'https://cn.vuejs.org/' },
+            { name: 'NodeJs', href: 'https://nodejs.org/' }
+          ] },
+        { title: 'PHP',
+          descr: 'PHP',
+          logo: '/static/php.png',
+          links: [
+            { name: 'PHP Manual', href: 'http://php.net/manual/zh/index.php' },
+            { name: 'Composer', href: 'http://www.phpcomposer.com/' },
+            { name: 'Packagist', href: 'https://packagist.org/' },
+            { name: 'Laravel', href: 'https://laravel.com/' }
+          ] },
+        { title: 'Python',
+          descr: 'Python',
+          logo: '/static/python.png',
+          links: [
+            { name: 'Python', href: 'https://www.python.org/' },
+            { name: 'Anaconda', href: 'https://www.anaconda.com/' },
+            { name: 'Scrapy', href: 'https://scrapy.org/' },
+            { name: 'Celery', href: 'https://www.celeryproject.org/' },
+            { name: 'Matplotlib', href: 'http://matplotlib.org/gallery.html' }
+          ] },
+        { title: 'Database',
+          descr: 'MySQL, Postgresql',
+          logo: '/static/mysql.png',
+          links: [
+            { name: 'MySQL', href: 'https://www.mysql.com/' },
+            { name: 'PostgreSQL', href: 'https://www.postgresql.org/' },
+            { name: 'MongoDB', href: 'https://www.mongodb.com/' },
+            { name: 'Redis', href: 'https://redis.io/' },
+            { name: 'Elasticsearch', href: 'https://www.elastic.co/products/elasticsearch' }
+          ] },
+        { title: 'Linux',
+          descr: 'Linux',
+          logo: '/static/linux.png',
+          links: [
+            { name: 'CentOS中文', href: 'http://centoscn.com/' },
+            { name: 'Git', href: 'https://git-scm.com/' },
+            { name: 'Docker', href: 'https://docs.docker.com/' },
+            { name: 'Nginx', href: 'https://nginx.org/' }
+          ] },
+        { title: 'Design',
+          descr: 'Graphic, PS',
+          logo: '/static/design.png',
+          links: [
+            { name: 'Dribbble', href: 'https://dribbble.com/' },
+            { name: 'ColorHunt', href: 'http://colorhunt.co/' },
+            { name: 'Icon', href: 'http://www.iconarchive.com/' },
+            { name: 'Wallions', href: 'http://wallions.com/' }
+          ] }
       ],
       showSkill: -1,
       timeline: [
         {
-          "title": "SNP Crawler",
-          "content": "基因数据爬虫，从多个知名网站中抓取基因数据，并保存到文件、MongoDB 或 Elasticsearch中。",
-          "github": "https://github.com/wwtg99/snp_crawler"
+          title: 'SNP Crawler',
+          content: '基因数据爬虫，从多个知名网站中抓取基因数据，并保存到文件、MongoDB 或 Elasticsearch中。',
+          github: 'https://github.com/wwtg99/snp_crawler'
         },
         {
-          "title": "SNP Search",
-          "content": "整合多个数据库来源搜索 SNP 相关的位置、基因、频率、表型等信息。",
-          "url": "http://52jing.wang/snp",
-          "github": "https://github.com/wwtg99/snp_search"
+          title: 'SNP Search',
+          content: '整合多个数据库来源搜索 SNP 相关的位置、基因、频率、表型等信息。',
+          url: 'http://52jing.wang/snp',
+          github: 'https://github.com/wwtg99/snp_search'
         },
         {
-          "title": "Image Filter",
-          "content": "图片处理与滤镜工具。",
-          "url": "http://52jing.wang/image",
-          "github": "https://github.com/wwtg99/image_filter"
+          title: 'Image Filter',
+          content: '图片处理与滤镜工具。',
+          url: 'http://52jing.wang/image',
+          github: 'https://github.com/wwtg99/image_filter'
         },
         {
-          "title": "Height Predictor",
-          "content": "机器学习方法预测基因身高。",
-          "url": "http://52jing.wang/height_predictor",
-          "github": "https://github.com/wwtg99/predict_height"
-        },
+          title: 'Height Predictor',
+          content: '机器学习方法预测基因身高。',
+          url: 'http://52jing.wang/height_predictor',
+          github: 'https://github.com/wwtg99/predict_height'
+        }
       ]
     }
   },
-  methods : {
-    clickSkill(index, event) {
-      this.showSkill = index == this.showSkill ? -1 : index;
+  methods: {
+    clickSkill (index, event) {
+      this.showSkill = (index === this.showSkill ? -1 : index)
     },
-    resetSkill() {
-      this.showSkill = -1;
+    resetSkill () {
+      this.showSkill = -1
     },
-    shuffle() {
-      this.showSkill = this.showSkill == 0 ? -1 : 0;
+    shuffle () {
+      this.showSkill = (this.showSkill === 0 ? -1 : 0)
     },
-    openUrl(url) {
-        window.open(url);
+    openUrl (url) {
+      window.open(url)
     },
-    secondBlockScroll() {
-        let scrollTop=0;
-        if(document.documentElement&&document.documentElement.scrollTop)
-        {
-          scrollTop=document.documentElement.scrollTop;
-        }
-        else if(document.body) {
-          scrollTop = document.body.scrollTop;
-        }
-        let s = document.getElementById('second-block');
-        let top = s.offsetTop - scrollTop;
-        let trans = 'none';
-        if (top < 1) {
-            trans = 'none';
-        } else {
-            let scale = (750 - top) / 750;
-            trans = 'scale(' + scale + ',' + scale + ')';
-        }
-        this.roleStyle.transform = trans;
-        this.roleStyle['-ms-transform'] = trans;
-        this.roleStyle['-moz-transform'] = trans;
-        this.roleStyle['-webkit-transform'] = trans;
-        this.roleStyle['-o-transform'] = trans;
+    secondBlockScroll () {
+      let scrollTop = 0
+      if (document.documentElement && document.documentElement.scrollTop) {
+        scrollTop = document.documentElement.scrollTop
+      } else if (document.body) {
+        scrollTop = document.body.scrollTop
+      }
+      let s = document.getElementById('second-block')
+      let top = s.offsetTop - scrollTop
+      let trans = 'none'
+      if (top < 1) {
+        trans = 'none'
+      } else {
+        let scale = (750 - top) / 750
+        trans = 'scale(' + scale + ',' + scale + ')'
+      }
+      this.roleStyle.transform = trans
+      this.roleStyle['-ms-transform'] = trans
+      this.roleStyle['-moz-transform'] = trans
+      this.roleStyle['-webkit-transform'] = trans
+      this.roleStyle['-o-transform'] = trans
     }
   },
-  mounted() {
-    window.addEventListener('scroll', this.secondBlockScroll);
+  mounted () {
+    window.addEventListener('scroll', this.secondBlockScroll)
   }
 }
 </script>

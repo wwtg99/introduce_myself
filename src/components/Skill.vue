@@ -25,10 +25,10 @@
     },
     props: ['skill'],
     methods: {
-        clickSkill: function () {
-            this.isActive = true;
-            this.$emit('click_skill');
-        }
+      clickSkill: function () {
+        this.isActive = true
+        this.$emit('click_skill')
+      }
     }
   }
 </script>
