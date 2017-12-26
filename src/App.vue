@@ -10,7 +10,7 @@
     <div class="block" id="second-block">
       <p class="title">选择角色</p>
       <div class="roles">
-        <zoom-img-box v-for="r in roles" v-bind:box_data="r" v-bind:style="roleStyle"></zoom-img-box>
+        <zoom-img-box v-for="(r, i) in roles" v-bind:box_data="r" v-bind:style="roleStyle" v-bind:key="i"></zoom-img-box>
       </div>
     </div>
     <div class="block" id="third-block">
