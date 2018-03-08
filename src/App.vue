@@ -151,19 +151,19 @@ export default {
         {
           title: 'SNP Search',
           content: '整合多个数据库来源搜索 SNP 相关的位置、基因、频率、表型等信息。',
-          url: 'http://52jing.wang/snp',
+          url: 'http://snp.52jing.wang',
           github: 'https://github.com/wwtg99/snp_search'
         },
         {
           title: 'Image Filter',
           content: '图片处理与滤镜工具。',
-          url: 'http://52jing.wang/image',
+          url: 'http://image-filter.52jing.wang',
           github: 'https://github.com/wwtg99/image_filter'
         },
         {
           title: 'Height Predictor',
           content: '机器学习方法预测基因身高。',
-          url: 'http://52jing.wang/height_predictor',
+          url: 'http://height-predict.52jing.wang',
           github: 'https://github.com/wwtg99/predict_height'
         }
       ]
