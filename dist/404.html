@@ -4,27 +4,42 @@
     <meta charset="UTF-8">
     <title>找不到页面</title>
     <style>
+        body {
+          margin: 0;
+          padding: 0;
+          font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+          font-size: 16px;
+        }
         .wrapper {
           margin: 0;
           padding: 0;
-          width: 100%;
-          height:100%;
+          width: 100vw;
+          height: 100vh;
           background-image: url('/static/back.jpg');
+          background-size: cover;
+          background-position: center center;
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+        }
+        .content {
+          margin: 0 auto;
+          text-align: center;
+          padding-top: 50px;
+        }
+        .num {
+          font-weight: bold;
+          font-size: 18px;
         }
     </style>
 </head>
 <body>
     <div class="wrapper">
-
-    </div>
-    <div class="b">
-        <img src="/static/404.png" class="center"/>
-            <p>
-              暂时未能找到您查找的页面<br>
-              可能输入的网址错误或此页面不存在<br>
-              <span id="num"></span>秒后自动跳转到主页
-            </p>
-        </div>
+      <div class="content">
+          <img src="/static/404.png"/>
+          <p>暂时未能找到您查找的页面<br>
+              <span class="num" id="num"></span> 秒后自动跳转到主页 <a href="http://52jing.wang">立即跳转</a>
+          </p>
+      </div>
     </div>
     <script type="text/javascript">
       var num = 6;
@@ -36,7 +51,7 @@
             location.href="http://52jing.wang";
           }
       }
-//      setInterval("redirect()", 1000);
+      setInterval("redirect()", 1000);
     </script>
 </body>
 </html>
