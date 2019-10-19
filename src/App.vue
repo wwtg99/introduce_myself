@@ -3,11 +3,11 @@
     <div class="block" id="first-block">
       <div class="float-block">
         <h1>Welcome Visitor</h1>
-        <p>欢迎来到剑与魔法的世界！</p>
+        <p>欢迎来到吴文涛的个人空间！</p>
         <p>接下来，我们将一起 <Icon type="fork"></Icon> <Icon type="pizza"></Icon> \(^o^)/</p>
       </div>
     </div>
-    <div class="block" id="second-block">
+    <!-- <div class="block" id="second-block">
       <p class="title">选择角色</p>
       <div class="roles">
         <zoom-img-box v-for="(r, i) in roles" v-bind:box_data="r" v-bind:style="roleStyle" v-bind:key="i"></zoom-img-box>
@@ -23,9 +23,9 @@
           <skill-detail v-for="(s, index) in skills" v-show="showSkill == index" v-bind:skill="s" v-bind:key="index"></skill-detail>
         </transition-group>
       </div>
-    </div>
+    </div> -->
     <div class="block" id="forth-block">
-      <p class="title">和我一起冒险吧</p>
+      <p class="title">相关个人工作</p>
       <div class="timeline">
         <Timeline>
           <Timeline-item v-for="t in timeline">
@@ -53,6 +53,9 @@
           <a href="https://github.com/wwtg99" target="_blank">https://github.com/wwtg99</a>
         </div>
       </div>
+    </div>
+    <div class="footer">
+      吴文涛的个人空间 <a href="www.beian.miit.gov.cn">苏ICP备15046288号</a>
     </div>
     <Back-top></Back-top>
   </div>
@@ -330,5 +333,9 @@ export default {
 
   .contact-block img.email_addr {
     height: 15px;
+  }
+  .footer {
+    text-align: center;
+    font-size: 16px;
   }
 </style>
