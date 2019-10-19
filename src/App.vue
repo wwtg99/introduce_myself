@@ -55,7 +55,7 @@
       </div>
     </div>
     <div class="footer">
-      吴文涛的个人空间 <a href="www.beian.miit.gov.cn">苏ICP备15046288号</a>
+      吴文涛的个人空间 <a href="http://www.beian.miit.gov.cn">苏ICP备15046288号</a>
     </div>
     <Back-top></Back-top>
   </div>
